@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/png" href="img_data/logo.png">
+    <title>Trang Chủ-THPT Hoành Bồ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+			line-height: 1.6;
+        }
+
+        .navbar {
+            background: #4CAF50;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar img {
+            max-width: 50px;
+            height: auto;
+            margin-right: 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            transition: 0.3s;
+            flex-grow: 1;
+        }
+
+        .navbar a {
+            color: white;
+            padding: 12px 15px;
+            text-decoration: none;
+            font-size: clamp(16px, 1.2vw, 18px);
+            white-space: nowrap;
+            transition: background 0.3s;
+        }
+
+        .navbar a:hover {
+            background: #4ca04d;
+            border-radius: 5px;
+        }
+
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .menu-icon span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.4s;
+        }
+
+        #menuToggle {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: flex;
+                margin-right: auto;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: #4CAF50;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 10px 0;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            }
+
+            #menuToggle:checked ~ .nav-links {
+                display: flex;
+            }
+
+            .navbar a {
+                width: 100%;
+                text-align: left;
+                padding: 15px 20px;
+                font-size: 16px;
+            }
+
+            #menuToggle:checked + .menu-icon span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            #menuToggle:checked + .menu-icon span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            #menuToggle:checked + .menu-icon span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+        }
+
+        header {
+            padding: 50px 0 0;
+            background: transparent;
+            color: black;
+        }
+
+        .header-img {
+            width: 100%;
+            height: auto;
+			max-height: 400px;
+            object-fit: cover;
+            object-position: 50% 60%;
+        }
+
+        .slogan {
+            line-height: 1.2;
+            font-size: clamp(14px, 1.5vw, 20px);
+            margin: 20px 0;
+        }
+
+        .content {
+            padding: 20px;
+			width: 90%;
+			max-width: 1200px;
+            margin-top: 60px;
+			margin: 0px auto;
+        }
+
+        .section {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+
+        .section a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            font-size: 2vw;
+        }
+
+        .section a img {
+            width: 100%;
+            height: 40vw;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .section a img[src="img_data/gioi_thieu/title.jpg"] {
+            object-position: 50% 50%;
+        }
+
+        .section a img[src="img_data/thanh_tich/title.jpg"] {
+            object-position: 50% 40%;
+        }
+
+        .section a img[src="img_data/clb/title.jpg"] {
+            object-position: 50% 30%;
+        }
+
+        .section a img[src="img_data/hoat_dong/title.jpg"] {
+            object-position: 50% 60%;
+        }
+
+        footer {
+            background: #4CAF50;
+            color: white;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-text {
+            text-align: left;
+            max-width: 50%;
+        }
+
+        .footer-map {
+            width: 95vw;
+        }
+
+        .footer-map iframe {
+            width: 100%;
+            height: 250px;
+            border: 0;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                width: 90%;
+            }
+
+            .slogan {
+                font-size: 14px;
+            }
+
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-text, .footer-map {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo-container">
+            <img src="img_data/logo.png" alt="Logo trường">
+        </div>
+        <input type="checkbox" id="menuToggle">
+        <label for="menuToggle" class="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <div class="nav-links">
+            <a href="video/easter_eggs.html">TRANG CHỦ</a>
+            <a href="#gioi_thieu">GIỚI THIỆU</a>
+            <a href="#thanh_tich">THÀNH TÍCH</a>
+            <a href="#clb">CÂU LẠC BỘ</a>
+            <a href="#hoat_dong">HOẠT ĐỘNG</a>
+            <a href="#footer">ĐỊA CHỈ</a>
+        </div>
+    </div>
+    <header>
+        <img src="img_data/HBO.jpg" alt="Ảnh minh họa trường" class="header-img">
+        <h1 style="margin-top: 20px; font-size: 2.5rem;">Trường THPT Hoành Bồ</h1>
+        <p class="slogan">TỰ HÀO LÀ HỌC SINH CỦA TRƯỜNG THPT HOÀNH BỒ</p>
+    </header>
+    <div class="content">
+        <div id="gioi_thieu" class="section">
+            <a href="gioi_thieu.html">
+                <img src="img_data/gioi_thieu/title.jpg" alt="title">
+                <p>Đôi nét về trường THPT Hoành Bồ</p>
+            </a>
+        </div>
+        <div id="thanh_tich" class="section">
+            <a href="thanh_tich.html">
+                <img src="img_data/thanh_tich/title.jpg" alt="Ảnh thành tích">
+                <p>Các thành tích nổi bật của trường </p>
+            </a>
+        </div>
+        <div id="clb" class="section">
+            <a href="clb.html">
+                <img src="img_data/clb/title.jpg" alt="Ảnh clb">
+                <p>Câu lạc bộ-nơi hội tụ của những người cùng sở thích </p>
+            </a>
+        </div>
+        <div id="hoat_dong" class="section">
+            <a href="hoat_dong.html">
+                <img src="img_data/hoat_dong/title.jpg" alt="Ảnh hoạt động">
+                <p>Các sự kiện và hoạt động ngoại khóa tiêu biểu</p>
+            </a>
+        </div>
+    </div>
+    <footer>
+        <div id="footer" class="footer-text">
+            <p><strong>TRƯỜNG TRUNG HỌC PHỔ THÔNG HOÀNH BỒ-QUẢNG NINH</strong></p>
+            <p>Địa chỉ: Khu Trới 6, phường Hoành Bồ, thành phố Hạ Long, tỉnh Quảng Ninh</p>
+            <p>Email: c3hoanhbo.quangninh@moet.edu.vn</p>
+            <p>SDT: 02033.858.598</p>
+        </div>
+        <div class="footer-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.0292376572493!2d106.990805!3d21.031516099999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314af5c955555555%3A0xe325f2723f73d4d0!2zVHLGsOG7nW5nIFRIUFQgSG_DoG5oIELhu5M!5e0!3m2!1svi!2s!4v1740215357860!5m2!1svi!2s"></iframe>
+        </div>
+    </footer>
+</body>
+</html>
