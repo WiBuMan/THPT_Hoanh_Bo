@@ -1,1 +1,0 @@
-# THPT_Hoanh_Bo
